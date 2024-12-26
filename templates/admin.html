@@ -1,0 +1,29 @@
+{% if request.user.is_authenticated %}
+  <p>{{ request.user.username }}</p>
+  <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+  <a href="{% url 'register' %}">Signup</a>
+{% endif %}
+
+<h1>Welcome!</h1>
+
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Fullname</th>
+    </tr>
+    {% for data in queryset %}
+    <tr>
+        <td>{{data.email}}</td>
+        <td>{{data.username}}</td>
+        <td>{{data.fullname}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'admin_signup' %}">Create User</a>
+<a href="{% url 'category' %}">Create Category</a>
+<a href="{% url 'addQuestion' %}">Create Quiz</a>
+<a href="{% url 'user_data' %}">User Quiz History</a>

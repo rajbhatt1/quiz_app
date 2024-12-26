@@ -1,0 +1,17 @@
+
+      <table>
+        <tr>
+          <th>User</th>
+          <th>Quiz Name</th>
+          <th>Score Card</th>
+          <th>Email</th>
+        </tr>
+        {%for quiz in take_quiz%}
+        <tr>
+          <td>{{quiz.user.fullname}}</td>
+          <td>{{quiz.category}}</td>
+          <td>{{quiz.score}}</td>
+          <td>{{quiz.user.email}}</td>
+        </tr>
+        {%endfor%}
+      </table>

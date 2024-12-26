@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ quiz.title }}</title>
+  </head>
+  <body>
+    <div align="right " id="timer"><b>Timer: 0 seconds</b></div>
+    <h1>{{ quiz.title }}</h1>
+    <input id='t1' type='hidden' name="timer" value="">
+    <br>
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <button id="mydiv" onclick="myFunction()" type="submit">Submit</button>
+    </form>
+
+    <table>
+      <tr>
+        <th>User</th>
+        <th>Correct</th>
+        <th>Total</th>
+      </tr>
+
+      <tr>
+        <td>{{user}}</td>
+        <td>{{score}}</td>
+        <td>{{total}}</td>
+      </tr>
+    </table>
+    {% block script %}
+        <script>
+ 
+            console.log('hello world')
+            // const timer=document.getElementById('displaytimer')
+            // console.log(timer.textContent)
+            // const inputtag = document.getElementById('timer')
+ 
+            var t = 60;
+            const time = setInterval(function(){
+            if(t>0)
+              t--;
+              document.getElementById("timer").innerHTML = "Time Remain : "+ t + " seconds";
+            
+            if(t<=0){
+              
+                clearInterval(time);
+                document.getElementById("mydiv").disabled = true;
+                document.getElementById("timer").innerHTML = "Timeout"
+                  
+              } 
+            },100);
+            const x = setInterval(myFunction,10)
+            myFunction();
+            
+            // function myFunction() {
+            // // var x = document.getElementById('mydiv').style.visibility='hidden';
+            //   if (t > 0) {
+            //    x.style.display = "block";
+            //   } 
+            //   else {
+            //    document.getElementById('mydiv').disabled= true;
+            //   }
+            // }
+            
+        </script>
+    {% endblock script %}
+ 
+</div>
+
+    
+    <a href="{% url 'user_details' %}">User Details</a>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+      
+       
+      
+      <table>
+        <tr>
+          <th>category</th>
+          <th>given_datetime</th>
+          <th>score</th>
+          <th>user</th>
+        </tr>
+        {%for quiz in take_quiz%}
+        <tr>
+          <td>{{quiz.category}}</td>
+          <td>{{quiz.given_datetime}}</td>
+          <td>{{quiz.score}}</td>
+          <td>{{quiz.user.email}}</td>
+        </tr>
+        {%endfor%}
+      </table>
+      
+</body>
+</html>
